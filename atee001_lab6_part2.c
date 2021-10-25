@@ -1,21 +1,14 @@
-/*	Author: lab
+/*	Author: Andrew Tee
  *  Partner(s) Name: 
  *	Lab Section:
- *	Assignment: Lab #  Exercise #
+ *	Assignment: Lab #6  Exercise #2
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
- */
-
-/*	Author: lab
- *  Partner(s) Name:
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
- *	Exercise Description: [optional - include for your own benefit]
  *
- *	I acknowledge all content contained herein, excluding template or example
- *	code, is my own original work.
+ * Demo: https://youtu.be/qz1JVSg-hjo
+ *
  */
 
 #include <avr/io.h>
