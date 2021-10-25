@@ -111,10 +111,10 @@ void Tick(){
 			break;
 
 		case wait_on:
-			LED_State = (PAO) ? wait_on : wait_off;
+			LED_State = (PA0) ? wait_on : wait_off;
 			break;
 		case wait_off:
-			LED_State = (PAO) ? init : wait_off;
+			LED_State = (PA0) ? init : wait_off;
 		default:
 			break;
 
