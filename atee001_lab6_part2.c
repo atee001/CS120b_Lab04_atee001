@@ -22,7 +22,6 @@
 #include <avr/interrupt.h>
 #ifdef SIMULATE
 #include "simAVRHeader.h"
-#define PA0 ~(PINA x 0x01)
 #endif
 
 
