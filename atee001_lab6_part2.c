@@ -119,7 +119,13 @@ void Tick(){
 			LED_State = ((~PINA & 0x01) == 0x01) ? wait_on : wait_off;
 			break;
 		case wait_off:
-			LED_State = ((~PINA & 0x01) == 0x01) ? init : wait_off;
+			if((~PINA & 0x01) == 0x01){
+				PORTB = 0x01;
+				LED_State = forward;
+			}
+			else{
+				LED_State = wait_off;
+			}
 			break;
 		default:
 			break;
