@@ -97,6 +97,7 @@ void Tick(){
 			}
 			else{
 				PORTB = PORTB << 1;
+				LED_State = forward;
 			}
 			break;
 
@@ -107,6 +108,7 @@ void Tick(){
 			}
 			else{
 				PORTB = PORTB >> 1;
+				LED_State = backward;
 			}
 			break;
 
@@ -131,7 +133,7 @@ void Tick(){
 }
 void main(){
 	DDRB = 0xff; PORTB = 0x00;
-	TimerSet(1000);
+	TimerSet(30);
 	TimerOn();
 	LED_State = init;
 	while(1){
@@ -145,3 +147,4 @@ void main(){
 
 
 }
+
