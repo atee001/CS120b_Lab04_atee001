@@ -88,11 +88,13 @@ void Tick(){
 
 
 		case init:
+			PORTB = 0x01;
 			LED_State = forward;
 			break;
 		case forward:
-			if(PA0) LED_State = wait_on;
-			else if(PORTB = 0x04){
+			if((~PINA & 0x01) == 0x01) LED_State = wait_on;
+			else if(PORTB == 0x04){
+				PORTB = PORTB >> 1;
 				LED_State = backward;
 			}
 			else{
@@ -102,8 +104,9 @@ void Tick(){
 			break;
 
 		case backward:
-			if(PA0) LED_State = wait_on;
-			else if(PORTB = 0x01){
+			if((~PINA & 0x01) == 0x01) LED_State = wait_on;
+			else if(PORTB == 0x01){
+				PORTB = PORTB << 1;
 				LED_State = forward;
 			}
 			else{
@@ -113,17 +116,17 @@ void Tick(){
 			break;
 
 		case wait_on:
-			LED_State = (PA0) ? wait_on : wait_off;
+			LED_State = ((~PINA & 0x01) == 0x01) ? wait_on : wait_off;
 			break;
 		case wait_off:
-			LED_State = (PA0) ? init : wait_off;
+			LED_State = ((~PINA & 0x01) == 0x01) ? init : wait_off;
+			break;
 		default:
 			break;
 
 	}
 	switch(LED_State){
 		case init:
-			PORTB = 0x01;
 			break;
 		default:
 			break;
@@ -131,9 +134,10 @@ void Tick(){
 
 
 }
-void main(){
+int main(void){
 	DDRB = 0xff; PORTB = 0x00;
-	TimerSet(30);
+	DDRA = 0x00; PORTA = 0xff;
+	TimerSet(150);
 	TimerOn();
 	LED_State = init;
 	while(1){
